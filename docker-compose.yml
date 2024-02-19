@@ -1,0 +1,21 @@
+version: "3"
+services:
+  node_app:
+    build:
+      context: .
+    container_name: sms_app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - /home/flory/sms/client:/usr/src/app
+      - /usr/src/app/node_modules 
+#    environnement:
+#     - PORT=5000 
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    name: frontend
+    external: true 
